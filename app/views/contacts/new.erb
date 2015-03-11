@@ -1,0 +1,30 @@
+<h1>Create a new contact</h1>
+<% if @contact && @contact.errors.any? %>
+  <div>
+    <strong>There are some issues with your submission. Please fix the following:</strong>
+    <ul>
+      <% @contact.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+
+<form method="post" action="/contacts">
+  <div>
+    <label>Email:</label>
+    <input type="text" name="email" value="<%= @contact && @contact.email %>">
+  </div>
+  <div>
+    <label>First Name:</label>
+    <input type="text" name="firstname" value="<%= @contact && @contact.firstname %>">
+  </div>
+  <div>
+    <label>Last Name:</label>
+    <input type="text" name="lastname" value="<%= @contact && @contact.lastname %>">
+  </div>
+  <div>
+    <input type="submit" value="Create Contact">
+  </div>
+</form>
